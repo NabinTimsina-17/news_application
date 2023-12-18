@@ -67,8 +67,15 @@ log(articles!.first.title!);
               itemCount: 100,
               itemBuilder: (BuildContext context, int index) {
                 
-                return ListTile(
-                  title: Text(articles![index].title!),
+                return Container(
+                  child: Column(
+                    children: [
+                      Image.network('articles![index].urlToImage'),
+                      Text(articles![index].title!),
+                      Text(articles![index].description!),
+                    ],
+                  ),
+                 
                 );
               },
             ),
