@@ -61,13 +61,14 @@ log(articles!.first.title!);
         children: [
           const CategoryCard(),
           Expanded(
-            
             child: ListView.builder(
               shrinkWrap: true,
               itemCount: 100,
               itemBuilder: (BuildContext context, int index) {
                 
+                
                 return Container(
+                  color: Color.fromARGB(255, 195, 189, 189),
                   child: Column(
                     children: [
                       Image.network('articles![index].urlToImage'),
@@ -75,7 +76,6 @@ log(articles!.first.title!);
                       Text(articles![index].description!),
                     ],
                   ),
-                 
                 );
               },
             ),
