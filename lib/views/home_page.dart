@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:news_application/category_card.dart';
+import 'package:news_application/services/api_services.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -9,6 +10,16 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late HttpService httpService;
+  void getUserData(){
+    httpService.getRequest("");
+  }
+  @override
+  void initState() {
+    httpService =HttpService();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,13 +51,8 @@ class _HomePageState extends State<HomePage> {
               itemCount: 100,
               itemBuilder: (BuildContext context, int index) {
                 
-                return Container(
-                  color: Colors.amber,
-                  child: const Column(
-                    children: [
-                   
-                    ],
-                  ),
+                return ListTile(
+                  
                 );
               },
             ),
