@@ -1,5 +1,9 @@
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:news_application/category_card.dart';
+import 'package:news_application/models/news_model.dart';
 import 'package:news_application/services/api_services.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,13 +14,25 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+   List<Articles>? articles;
   late HttpService httpService;
-  void getUserData(){
-    httpService.getRequest("");
+  void getUserData()async{
+   Response res =await httpService.getRequest("");
+   log(res.toString());
+AllNews allNews = AllNews.fromJson(res.data) ;
+log(allNews.toString());
+articles =allNews.articles;
+setState(() {
+  
+});
+log(articles!.first.title!);
   }
+
+
   @override
   void initState() {
     httpService =HttpService();
+    getUserData();
     super.initState();
   }
 
@@ -52,7 +68,7 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (BuildContext context, int index) {
                 
                 return ListTile(
-                  
+                  title: Text(articles![index].title!),
                 );
               },
             ),
