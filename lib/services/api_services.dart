@@ -23,10 +23,6 @@ Future<Response> getRequest(String endpoint) async{
   return res;
 
 }
-
-
- 
-
   void initializeInterceptors() {
     _dio.interceptors.add(PrettyDioLogger( requestHeader: true,
         requestBody: true,

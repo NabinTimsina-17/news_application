@@ -13,6 +13,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+
 class _HomePageState extends State<HomePage> {
    List<Articles>? articles;
   late HttpService httpService;
@@ -59,7 +60,7 @@ log(articles!.first.title!);
       ),
       body: Column(
         children: [
-          const CategoryCard(),
+         CategoryCard(),
           Expanded(
             child: ListView.builder(
               shrinkWrap: true,
