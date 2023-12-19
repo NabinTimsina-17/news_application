@@ -68,7 +68,7 @@ log(articles!.first.title!);
                 
                 
                 return Container(
-                  color: Color.fromARGB(255, 195, 189, 189),
+                  color: const Color.fromARGB(255, 195, 189, 189),
                   child: Column(
                     children: [
                       Image.network('articles![index].urlToImage'),
