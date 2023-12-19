@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'dart:developer';
 
 import 'package:dio/dio.dart';
@@ -5,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:news_application/category_card.dart';
 import 'package:news_application/models/news_model.dart';
 import 'package:news_application/services/api_services.dart';
+
+import '../utils/category_list.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -60,7 +64,23 @@ log(articles!.first.title!);
       ),
       body: Column(
         children: [
-         CategoryCard(),
+         ListView.builder(
+          shrinkWrap: true,
+          itemCount: categoryList.length,
+          itemBuilder:(context,index){
+              return  Container(
+                child:Stack(
+                    children: [
+                      Container(
+                      color:Colors.transparent,
+                      child: Text(categoryList[index]["title"]!)
+                      ),
+                      Container(
+                        child: Image.asset(categoryList[index]["url"]!),
+                      )
+                    ],
+                ) );
+          }),
           Expanded(
             child: ListView.builder(
               shrinkWrap: true,
